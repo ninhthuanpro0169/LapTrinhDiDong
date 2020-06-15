@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TravelGood</string>
+    <string name="hotro0">Bản quyền của Vietravel ® 2016.</string>
+    <string name="hotro1">"Bảo lưu mọi quyền. Ghi rõ nguồn ® khi sử dụng lại thông tin từ website này.
+    </string>
+    <string name="hotro2">"Số GPKD: 0300465937 do Sở Kế Hoạch và Đầu Tư Thành Phố Hồ Chí Minh cấp ngày 27/09/2010"
+    </string>
+    <string name="hotro3">"Số giấy phép kinh doanh lữ hành Quốc tế: 79-234/2014/TCDL-GP LHQT"
+    </string>
+</resources>

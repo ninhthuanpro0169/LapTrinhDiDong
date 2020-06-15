@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ChiTietdulich">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarchitietdulich"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:title="Thông tin"
+        android:background="#37238FD8"
+        app:titleTextColor="@color/design_default_color_primary">
+
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/imageviewchitietdulich"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+        <TextView
+            android:id="@+id/textviewtendiadiemchitiet"
+            android:text="Tên Địa Điểm"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/textviewdiachichitiet"
+            android:text="Địa Chỉ"
+            android:layout_gravity="center"
+            android:textStyle="italic"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="Mô tả chi tiết: "
+            android:layout_margin="5dp"
+            android:textStyle="italic"
+            android:textSize="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="18dp"
+                android:layout_margin="5dp"
+                android:paddingBottom="10dp"
+                android:id="@+id/textviewmotachitiet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>
