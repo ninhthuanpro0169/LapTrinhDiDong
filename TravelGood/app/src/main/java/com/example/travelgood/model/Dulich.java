@@ -1,7 +1,4 @@
 package com.example.travelgood.model;
-
-import android.support.annotation.NonNull;
-
 import java.io.Serializable;
 
 public class Dulich implements Serializable {
@@ -11,15 +8,20 @@ public class Dulich implements Serializable {
     public String Hinhanhdiadiemdulich;
     public String Motadiadiem;
     public int IDDulich;
+    public double Lat;
+    public double Lng;
 
-    public Dulich(int id, String tendiadiem, String diachi, String hinhanhdiadiemdulich, String motadiadiem, int idulich) {
+    public Dulich(int id, String tendiadiem, String diachi, String hinhanhdiadiemdulich, String motadiadiem, int idulich,double lat,double lng) {
         ID = id ;
         Tendiadiem = tendiadiem;
         Diachi = diachi;
         Hinhanhdiadiemdulich = hinhanhdiadiemdulich;
         Motadiadiem = motadiadiem;
         IDDulich = idulich;
+        Lat = lat;
+        Lng = lng;
     }
+
 
     public int getID(){ return ID;}
 
@@ -63,5 +65,20 @@ public class Dulich implements Serializable {
 
     public void setIDDulich(int iddulich) {
         this.IDDulich = iddulich ;
+    }
+    public double getLat() {
+        return Lat;
+    }
+
+    public void setLat(double lat) {
+        Lat = lat;
+    }
+
+    public double getLng() {
+        return Lng;
+    }
+
+    public void setLng(double lng) {
+        Lng = lng;
     }
 }

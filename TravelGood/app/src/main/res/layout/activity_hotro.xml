@@ -6,15 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".activity.HotroActivity"
     android:orientation="vertical">
-    <android.support.v7.widget.Toolbar
-        android:background="@color/colorAccent"
+    <androidx.appcompat.widget.Toolbar
+        android:background="@drawable/custom_toolbar"
         app:titleTextColor="@color/colorPrimary"
         app:title="Hỗ Trợ"
         android:id="@+id/toolbarhotro"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"

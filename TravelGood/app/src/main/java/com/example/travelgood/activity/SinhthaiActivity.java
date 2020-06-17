@@ -3,16 +3,19 @@ package com.example.travelgood.activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -106,6 +109,8 @@ public class SinhthaiActivity extends AppCompatActivity {
                 String Hinhanhsinhthai ="";
                 String Motast = "";
                 int Idsinhthai = 0;
+                double Lat;
+                double Lng;
                 if(response != null && response.length() != 2) {
                     listViewsinhthai.removeFooterView(footerview);
                     try {
@@ -118,7 +123,9 @@ public class SinhthaiActivity extends AppCompatActivity {
                             Hinhanhsinhthai = jsonObject.getString("hinhanhdiadiemdulich");
                             Motast = jsonObject.getString("motadiadiem");
                             Idsinhthai = jsonObject.getInt("iddulich");
-                            mangsinhthai.add(new Dulich(id,Tensinhthai,Diachist,Hinhanhsinhthai,Motast,Idsinhthai));
+                            Lat = jsonObject.getDouble("lat");
+                            Lng = jsonObject.getDouble("lng");
+                            mangsinhthai.add(new Dulich(id,Tensinhthai,Diachist,Hinhanhsinhthai,Motast,Idsinhthai,Lat,Lng));
                             dulichsinhthaiAdapter.notifyDataSetChanged();
                         }
                     } catch (JSONException e) {

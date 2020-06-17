@@ -6,15 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.ThamquanActivity">
-    <android.support.v7.widget.Toolbar
-        android:background="@color/colorAccent"
+    <androidx.appcompat.widget.Toolbar
+        android:background="@drawable/custom_toolbar"
         app:titleTextColor="@color/colorPrimary"
         app:title="Du Lịch Tham Quan - Văn Hóa"
         android:id="@+id/toolbarthamquan"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <ListView
         android:id="@+id/listviewthamquan"

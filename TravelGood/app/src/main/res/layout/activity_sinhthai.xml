@@ -6,15 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.SinhthaiActivity">
-    <android.support.v7.widget.Toolbar
-        android:background="@color/colorAccent"
+    <androidx.appcompat.widget.Toolbar
+        android:background="@drawable/custom_toolbar"
         app:titleTextColor="@color/colorPrimary"
         app:title="Du Lịch Sinh Thái - Nghỉ Dưỡng"
         android:id="@+id/toolbarsinhthai"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <ListView
         android:id="@+id/listviewsinhthai"

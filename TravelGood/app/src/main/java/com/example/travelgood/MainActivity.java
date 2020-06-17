@@ -2,14 +2,8 @@ package com.example.travelgood;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -19,6 +13,13 @@ import android.widget.ListView;
 import android.widget.ViewFlipper;
 
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -26,6 +27,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.travelgood.activity.HotroActivity;
 import com.example.travelgood.activity.KhamphaActivity;
+import com.example.travelgood.activity.SinhthaiActivity;
 import com.example.travelgood.activity.ThamquanActivity;
 import com.example.travelgood.adapter.DulichAdapter;
 import com.example.travelgood.adapter.LoaidlAdapter;
@@ -33,6 +35,7 @@ import com.example.travelgood.model.Dulich;
 import com.example.travelgood.model.Loaidl;
 import com.example.travelgood.ultil.CheckConnection;
 import com.example.travelgood.ultil.Server;
+import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -92,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                          break;
                     case 1:
                         if (CheckConnection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent = new Intent(MainActivity.this, KhamphaActivity.class);
+                            Intent intent = new Intent(MainActivity.this, SinhthaiActivity.class);
                             intent.putExtra("idloaidulich",mangloaidl.get(i).getId());
                             startActivity(intent);
                         }else {
@@ -195,6 +198,8 @@ public class MainActivity extends AppCompatActivity {
                      String Motadiadiem ="";
                      String Hinhanhdiadiem ="";
                      int IDDulich =0;
+                     double Lat;
+                     double Lng;
                      for ( int i = 0 ; i < response.length(); i++){
                          try{
                              JSONObject jsonObject = response.getJSONObject(i);
@@ -204,7 +209,9 @@ public class MainActivity extends AppCompatActivity {
                              Motadiadiem=jsonObject.getString("motadiadiem");
                              Hinhanhdiadiem=jsonObject.getString("hinhanhdiadiemdulich");
                              IDDulich = jsonObject.getInt("iddulich");
-                             mangdulich.add(new Dulich(ID,Tendiadiem,Diachi,Hinhanhdiadiem,Motadiadiem,IDDulich));
+                             Lat = jsonObject.getDouble("lat");
+                             Lng = jsonObject.getDouble("lng");
+                             mangdulich.add(new Dulich(ID,Tendiadiem,Diachi,Hinhanhdiadiem,Motadiadiem,IDDulich,Lat,Lng));
                              dulichAdapter.notifyDataSetChanged();
 
                          } catch (JSONException e) {
