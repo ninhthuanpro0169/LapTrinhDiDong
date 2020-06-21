@@ -4,16 +4,26 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -27,10 +37,12 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.travelgood.activity.HotroActivity;
 import com.example.travelgood.activity.KhamphaActivity;
+import com.example.travelgood.activity.SearchActivity;
 import com.example.travelgood.activity.SinhthaiActivity;
 import com.example.travelgood.activity.ThamquanActivity;
 import com.example.travelgood.adapter.DulichAdapter;
 import com.example.travelgood.adapter.LoaidlAdapter;
+import com.example.travelgood.adapter.SearchAdapter;
 import com.example.travelgood.model.Dulich;
 import com.example.travelgood.model.Loaidl;
 import com.example.travelgood.ultil.CheckConnection;
@@ -42,9 +54,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import static com.example.travelgood.R.id.actionsearch;
 import static com.example.travelgood.R.id.drawerlayout;
+import static com.example.travelgood.R.id.search_view;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbarmanhinhchinh;
@@ -56,27 +71,49 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ArrayList<Loaidl> mangloaidl;
     LoaidlAdapter loaidlAdapter;
-    int id=0;
-    String tenloaidulich="";
-    String hinhanhloaidulich="";
+    SearchAdapter searchAdapter;
+    int id = 0;
+    String tenloaidulich = "";
+    String hinhanhloaidulich = "";
     ArrayList<Dulich> mangdulich;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menutoolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case actionsearch:
+                Intent intent = new Intent(this, SearchActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Anhxa();
-        if(CheckConnection.haveNetworkConnection(getApplicationContext())) {
+        if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
             ActionViewFipper();
             ActionBar();
             GetDuLieuLoaidl();
             GetDuLieuDLHot();
             CatchonItemListView();
-        }else{
-            CheckConnection.ShowToast_Short(getApplicationContext(),"Kiểm tra lại kết nối");
+        } else {
+            CheckConnection.ShowToast_Short(getApplicationContext(), "Kiểm tra lại kết nối");
             finish();
         }
+
     }
+
 
     private void CatchonItemListView() {
 
@@ -175,6 +212,10 @@ public class MainActivity extends AppCompatActivity {
     private void ActionBar(){
         setSupportActionBar(toolbarmanhinhchinh);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("");
+        actionBar.setLogo(R.drawable.titletoolbar);
+        actionBar.setDisplayUseLogoEnabled(true);
         toolbarmanhinhchinh.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
         toolbarmanhinhchinh.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,6 +270,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(jsonArrayRequest);
 
     }
+
 
     private void ActionViewFipper() {
         ArrayList<String> mangquangcao = new ArrayList<>();

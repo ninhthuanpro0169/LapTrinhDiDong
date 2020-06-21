@@ -11,19 +11,24 @@
         android:layout_height="match_parent"
 >
         <LinearLayout
-
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarmanhinhchinh"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                app:title="."
                 app:titleTextColor="#D3B591"
                 android:background="@drawable/custom_toolbar">
-
             </androidx.appcompat.widget.Toolbar>
+                <com.miguelcatalan.materialsearchview.MaterialSearchView
+                    android:id="@+id/search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </FrameLayout>
             <ViewFlipper
                 android:background="#E4F3F1"
                 android:id="@+id/viewFlipper"
@@ -38,16 +43,27 @@
                 android:layout_height="match_parent"
                 android:background="#C5C2C2"
                 android:orientation="vertical">
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_nen"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:src="@drawable/iconnew"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp">
+
+                    </ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:text="Danh Sách Những Địa Điểm Mới"
                     android:textColor="#5B3D87"
                     android:textSize="25dp"
                     android:textStyle="italic|bold" />
+
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerview"

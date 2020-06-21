@@ -15,6 +15,7 @@
             android:layout_height="325dp"
             >
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="320dp"
@@ -29,7 +30,9 @@
                     android:id="@+id/imageviewdulich"
                     android:layout_width="match_parent"
                     android:layout_height="220dp"
-                    android:layout_margin="5dp" />
+                    android:layout_margin="5dp"
+                    />
+
 
                 <TextView
                     android:id="@+id/textviewtendiadiem"

@@ -19,14 +19,21 @@ import com.example.travelgood.ultil.CheckConnection;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class DulichAdapter extends RecyclerView.Adapter<DulichAdapter.ItemHolder> {
     Context context;
     ArrayList<Dulich> arraydulich;
 
+
+
+
+
     public DulichAdapter(Context context, ArrayList<Dulich> arraydulich) {
         this.context = context;
         this.arraydulich = arraydulich;
+
     }
 
     @NonNull
@@ -76,4 +83,7 @@ public class DulichAdapter extends RecyclerView.Adapter<DulichAdapter.ItemHolder
             });
         }
     }
+
+
+
 }
